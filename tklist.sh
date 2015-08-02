@@ -10,7 +10,7 @@
 #VARIABLES
 
 #email address (needs mailutils)
-adress="sanderhaukelidseater@gmail.com"
+adress="EMAIL_HERE"
 
 #tempfile name
 TEMPFILE="TKNAMES.tmp"
