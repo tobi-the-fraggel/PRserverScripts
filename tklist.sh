@@ -12,11 +12,8 @@
 #email address (needs mailutils)
 adress="EMAIL_HERE"
 
-#tempfile name
-TEMPFILE="TKNAMES.tmp"
-
 #tk list of counted names
-TKLIST="TKLIST.txt"
+TKLIST="$(date -I)_TKLIST.txt"
 
 ###########################################
 
@@ -24,17 +21,13 @@ TKLIST="TKLIST.txt"
 #generating date
 TDD=$(date +"%Y%m%d")
 
-#generating "full" file name
-WFL="chatlog_"$TDD"_"
-echo $WFL
 
-
-#grabbing TK'ers names and saving them in $TEMPFILE
-cat "$WFL"* | grep TEAMKILLS | cut -d' ' -f4 > $TEMPFILE
-
-#sorting the tempfile for next operation
-sort $TEMPFILE | uniq -c | sed 's/^ *//' | sort -k 1n > $TKLIST
+#grabbing TK'ers names file by file and save them in a log.
+for WFL in "chatlog_"$TDD"_"*; do
+        echo "+++++Tk's on $WFL+++++" >> $TKLIST
+        grep TEAMKILLS $WFL | cut -d' ' -f4 | sort | uniq -c | sort -n | sed 's/^[ \t]*//g' >> $TKLIST
+        echo "+++++End++++++" >> $TKLIST
+        echo "" >> $TKLIST
+done
 
 cat "$TKLIST" | mail -s $TDD $adress
-
-cat $TKLIST > $(date -I)_TKLIST.txt
