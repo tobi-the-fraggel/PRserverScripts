@@ -1,0 +1,40 @@
+#!/bin/bash
+### Add hashkey to banlist in a running PR console ###
+# Execute script name and enter the hash of someone
+# as an argument to be added to the banlist.
+# Example: ./ban.sh <hash>
+# Written by tobi-the-fraggel and Cisco
+
+#Constants
+COMMAND="admin.addKeyToBanList"
+TIME="perm"
+HASH=$1
+LENGTH=$(echo $1 | wc -m)
+DAYSTOBAN=$2
+BANTIME=$(date -I -d "+$2 days")
+
+# Do some tests.
+if [ -n "$2" ]; then
+	echo "$BANTIME $HASH" >> /home/pradmin/pr_servers/fcv/mods/pr/settings/banlist.txt
+	else
+	echo "Ban is not scheduled." > /dev/null
+	fi
+
+if [ $LENGTH -ne 33 ];
+    then
+        echo "Usage: ban <hash>"
+	echo "Length of hash is not correct. Did you copy the entire hash? Exiting script."
+        exit 1
+	else
+	echo "Hash is correct."
+    fi
+
+if grep -q "$1" /home/pradmin/pr_servers/fcv/mods/pr/settings/banlist.con; then
+	echo "Hash is already added to banlist. Exiting script."
+	exit 1
+	fi
+
+
+#Send command to screen session
+echo -e "Adding $1 to banlist.\nGit good motherfucker."
+screen -x fcv -X stuff "$COMMAND $1 $TIME"$(echo -ne '\015')

@@ -1,0 +1,21 @@
+#!/bin/bash
+### Remove hashkey from banlist in a running PR console ###
+# Execute script name and enter the hash of someone
+# as an argument to be added to the banlist.
+# Example: ./unban.sh <hash>
+# Written by tobi-the-fraggel and Cisco
+
+#Constants
+COMMAND="admin.removeKeyFromBanList"
+HASH=$1
+LENGTH=$(echo $1 | wc -m)
+
+if [ $LENGTH -ne 33 ];
+    then
+        echo "Usage: ./unban.sh \"hash\""
+        echo "Length of hash is not correct. Did you copy the entire hash?"
+        exit 1
+    fi
+
+#Send command to screen session
+screen -x fcv -X stuff "$COMMAND $1"$(echo -ne '\015')
