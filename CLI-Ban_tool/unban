@@ -22,11 +22,11 @@ LENGTH=$(echo $1 | wc -m)
 # Test if hash is a legit value.
 if [  $LENGTH -ne 33 ]
 	then
-		echo "Usage: ./unban.sh \"hash\""
+		echo "Usage: ban \"hash\""
 		echo "Length of hash is not correct. Did you copy the entire hash?"
 		exit 1
 # In case of a scheduled ban, this removes it.
-elif [[ -z $(grep "$1" "$TEMPBAN") ]]
+elif [ -z "$(grep "$1" "$TEMPBAN")" ]
 	then
 		echo -e "Removing $1 from time table.\nScheduled ban is lifted."
 		sed -i '/${$1}/d' "$TEMPBAN"
