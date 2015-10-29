@@ -14,12 +14,12 @@ PR console.
 - *screen* session name is always the same.
 
 #### Recommendation
-Log in on your box with the user account the pr server
+- Log in on your box with the user account the pr server
 is running on.
-If you don't already have the folder do **mkdir ~/bin**
-Add the folder to $PATH variable.
-http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path
-Why would you like to do that?
+- If you don't already have the folder do **mkdir ~/bin**
+- Add the folder to $PATH variable.
+- http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path
+Why would you like to do that?  
 You can then run the scripts form anywhere in your directory tree
 like any other program.
 
