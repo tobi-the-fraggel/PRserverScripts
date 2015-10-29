@@ -8,10 +8,10 @@ by injecting the ban command directly into the running
 PR console.
 
 #### Requirements
-**- Unix like OS 
+- Unix like OS 
 - Program *screen* is installed
 - PR runs in a *screen* session
-- *screen* session name is always the same.**
+- *screen* session name is always the same.
 
 #### Recommendation
 Log in on your box with the user account the pr server
