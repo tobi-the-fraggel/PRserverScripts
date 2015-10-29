@@ -17,6 +17,7 @@ TEMPBAN="/path/to/your/banlist.txt"
 #
 # Absolute path to your banlist.con
 BANLIST="/path/to/your/server/mods/pr/settings/banlist.con"
+#
 # Name of screen session your PR server is running in
 SCREEN="NameOfYourScreenSession"
 #

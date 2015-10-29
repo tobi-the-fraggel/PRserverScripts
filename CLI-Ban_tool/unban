@@ -13,6 +13,8 @@
 # Absolute path to scheduled bans file. Call it banlist.txt?
 TEMPBAN="/path/to/your/banlist.txt"
 #
+# Name of screen session your PR server is running in
+SCREEN="NameOfYourScreenSession"
 ########################################################################
 
 # Constants
@@ -36,4 +38,4 @@ fi
 
 
 # Send command to screen session
-screen -x fcv -X stuff "admin.removeKeyFromBanList $1"$(echo -ne '\015')
+screen -x "$SCREEN" -X stuff "admin.removeKeyFromBanList $1"$(echo -ne '\015')
