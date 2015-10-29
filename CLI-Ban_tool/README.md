@@ -7,13 +7,13 @@ file a newly added key gets lost if an admin **!b** or
 by injecting the ban command directly into the running
 PR console.
 
-# Requirements
+#### Requirements
 **- Unix like OS 
 - Program *screen* is installed
 - PR runs in a *screen* session
 - *screen* session name is always the same.**
 
-# Recommendation
+#### Recommendation
 Log in on your box with the user account the pr server
 is running on.
 If you don't already have the folder do **mkdir ~/bin**
