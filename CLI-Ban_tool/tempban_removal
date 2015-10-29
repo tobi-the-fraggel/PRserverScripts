@@ -6,8 +6,14 @@
 #
 ### Written by tobi-the-fraggel ###
 
-# Path to scheduled bans file
-TEMPBAN="/home/pradmin/pr_servers/fcv/mods/pr/settings/tempban.txt"
+
+#######################################################################
+### Server Variables / Adjust to your needs ###########################
+#
+# Absolute path to scheduled bans file. Call it banlist.txt?
+TEMPBAN="/path/to/your/banlist.txt"
+#
+#######################################################################
 
 # Constants
 DATE=$(date -I)

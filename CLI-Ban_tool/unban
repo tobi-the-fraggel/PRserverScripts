@@ -7,8 +7,13 @@
 # 
 ### Written by tobi-the-fraggel and Cisco ###
 
-# Path to scheduled bans file
-TEMPBAN="/home/pradmin/pr_servers/fcv/mods/pr/settings/tempban.txt"
+########################################################################
+### Server Variables / Adjust to your needs ############################
+#
+# Absolute path to scheduled bans file. Call it banlist.txt?
+TEMPBAN="/path/to/your/banlist.txt"
+#
+########################################################################
 
 # Constants
 HASH=$1
@@ -28,7 +33,6 @@ elif [[ -z $(grep "$1" "$TEMPBAN") ]]
 	else
 		echo -e "No scheduled ban found in $TEMPBAN\nRemoving $1 from banlist."
 fi
-
 
 
 # Send command to screen session
