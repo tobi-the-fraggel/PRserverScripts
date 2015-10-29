@@ -1,25 +1,26 @@
 #! /bin/bash
-### Lift temporary bans script ###
-# Run this script once a day by
-# a cronjob.
-# Written by tobi-the-fraggel
+### Automated removal of temporary bans ###
+# Run this script once a day by a cronjob.
+# Uncomment the 2 'echo' commands to test
+# script functionality.
+#
+### Written by tobi-the-fraggel ###
 
-# Location of tembans file
-TARGET="/home/pradmin/pr_servers/fcv/mods/pr/settings/banlist.txt"
+# Path to scheduled bans file
+TEMPBAN="/home/pradmin/pr_servers/fcv/mods/pr/settings/tempban.txt"
 
-# Getting todays date
+# Constants
 DATE=$(date -I)
+HASH=$(grep "$DATE" "$TEMPBAN" | cut -d' ' -f2)
 
-# Retrieving hash key from tempban file
-HASH=$(grep "$DATE" $TARGET | cut -d' ' -f2)
-
-# Check if there is a key to be removed and if not do nothing
-if [ -z "$HASH" ]; then
-	echo -e "No key to be removed today.\nExiting Script." > test.log
-	exit 1
+# Check if there is a key for removal and if not leave script.
+if [ -z "$HASH" ]
+	then
+		#echo -e "No key found matching current date.\nExiting Script."
+		exit 1
 fi
 
 # Removing hash from banlist and from tempban file
-echo "$HASH has been removed"
-sed -i "/${DATE}/d" $TARGET
+sed -i "/${DATE}/d" "$TEMPBAN"
 screen -x fcv -X stuff "admin.removeKeyFromBanList $HASH"$(echo -ne '\015')
+#echo "$HASH has been removed"
