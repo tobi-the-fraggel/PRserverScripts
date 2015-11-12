@@ -28,5 +28,5 @@ fi
 
 # Removing hash from banlist and from tempban file
 sed -i "/${DATE}/d" "$TEMPBAN"
-screen -x fcv -X stuff "admin.removeKeyFromBanList $HASH"$(echo -ne '\015')
+screen -x fcv -X stuff "admin.removeKeyFromBanList $HASH"$(echo -ne '\n')
 #echo "$HASH has been removed"
