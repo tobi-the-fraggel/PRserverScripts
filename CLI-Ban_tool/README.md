@@ -32,6 +32,6 @@ PR console.
 * **Example:**
 	* _**ban fffe41e8bebbc676846d440f0cde8a32**_ (bans the player with this hash permanently)
 	* _**unban fffe41e8bebbc676846d440f0cde8a32**_ (removes player with this hash from banlist)
-	* _**ban fffe41e8bebbc676846d440f0cde8a32 32**_ (bans the player with this hash for 32 days)
+	* _**ban fffe41e8bebbc676846d440f0cde8a32 44**_ (bans the player with this hash for 32 days)
 
 --- tobi-the-fraggel, 04th February 2016
