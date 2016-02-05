@@ -7,39 +7,25 @@
 # Usage: ./ban.sh <hash>
 #
 ### Written by tobi-the-fraggel and Cisco ###
+source config.sh
 
 
 #####################################################################
-### Server Variables / Edit to your needs! #########################
-#
-# Absolute path to scheduled bans file. Call it banlist.txt?
-TEMPBAN="/path/to/your/banlist.txt"
-#
-# Absolute path to your banlist.con
-BANLIST="/path/to/your/server/mods/pr/settings/banlist.con"
-#
-# Name of screen session your PR server is running in
-SCREEN="NameOfYourScreenSession"
-#
-#####################################################################
-
-#####################################################################
-#Constants (Do not edit if you don't know what you are doing)
-TIME="perm"
-HASH=$1
-LENGTH=$(echo $1 | wc -m)
-DAYSTOBAN=$2
-BANTIME=$(date -I -d "+$2 days")
+#Variables (Do not edit if you don't know what you are doing)
+hash=$1
+daysToBan=$2
+length=$(echo $hash | wc -m)
+bantime=$(date -I -d "+$daysToBan days")
 #####################################################################
 
 
 # Do some tests.
-if [ -n "$2" ]
+if [ -n "$daysToBan" ]
 	then
-		echo "$BANTIME $HASH" >> "$TEMPBAN"
+		echo "$bantime $hash" >> "$TEMPBAN"
 fi
 
-if [ $LENGTH -ne 33 ]
+if [ $length -ne 33 ]
     then
         echo "Usage: ban <hash>"
 		echo "Length of hash is not correct. Did you copy the entire hash? Exiting script."
@@ -48,7 +34,7 @@ if [ $LENGTH -ne 33 ]
 		echo "Hash is correct."
 fi
 
-if grep -q "$1" "BANLIST"
+if grep -q "$hash" "$BANLIST"
 	then
 		echo "Hash is already added to banlist. Exiting script."
 		exit 1
@@ -56,6 +42,6 @@ fi
 
 
 #Send command to screen session
-echo "Adding $1 to banlist..."
-screen -x "$SCREEN" -X stuff "admin.addKeyToBanList $1 $TIME"$(echo -ne '\015')
-echo "Git good motherfucker."
+echo "Adding $hash to banlist..."
+screen -x "$SCREEN" -X stuff "admin.addKeyToBanList $hash perm"$(echo -ne '\015')
+echo "Git good fuckbag."

@@ -5,28 +5,19 @@
 # script functionality.
 #
 ### Written by tobi-the-fraggel ###
+source config.sh
 
-
-#######################################################################
-### Server Variables / Adjust to your needs ###########################
-#
-# Absolute path to scheduled bans file. Call it banlist.txt?
-TEMPBAN="/path/to/your/banlist.txt"
-#
-#######################################################################
-
-# Constants
-DATE=$(date -I)
-HASH=$(grep "$DATE" "$TEMPBAN" | cut -d' ' -f2)
+# Variables
+date=$(date -I)
+hash=$(grep "$date" "$TEMPBAN" | cut -d' ' -f2)
 
 # Check if there is a key for removal and if not leave script.
-if [ -z "$HASH" ]
+if [ -z "$hash" ]
 	then
-		#echo -e "No key found matching current date.\nExiting Script."
 		exit 1
 fi
 
 # Removing hash from banlist and from tempban file
-sed -i "/${DATE}/d" "$TEMPBAN"
-screen -x fcv -X stuff "admin.removeKeyFromBanList $HASH"$(echo -ne '\n')
-#echo "$HASH has been removed"
+sed -i "/${date}/d" "$TEMPBAN"
+screen -x "$SCREEN" -X stuff "admin.removeKeyFromBanList $hash"$(echo -ne '\n')
+echo "$hash git better and is removed."

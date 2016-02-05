@@ -6,36 +6,27 @@
 # Usage: ban <hash>
 # 
 ### Written by tobi-the-fraggel and Cisco ###
+source config.sh
 
-########################################################################
-### Server Variables / Adjust to your needs ############################
-#
-# Absolute path to scheduled bans file. Call it banlist.txt?
-TEMPBAN="/path/to/your/banlist.txt"
-#
-# Name of screen session your PR server is running in
-SCREEN="NameOfYourScreenSession"
-########################################################################
-
-# Constants
-HASH=$1
-LENGTH=$(echo $1 | wc -m)
+# Variables
+hash=$1
+length=$(echo $hash | wc -m)
 
 # Test if hash is a legit value.
-if [  $LENGTH -ne 33 ]
+if [  $length -ne 33 ]
 	then
-		echo "Usage: ban \"hash\""
+		echo "Usage: unban <hash>"
 		echo "Length of hash is not correct. Did you copy the entire hash?"
 		exit 1
 # In case of a scheduled ban, this removes it.
-elif [ -z "$(grep "$1" "$TEMPBAN")" ]
+elif [ -z "$(grep "$hash" "$TEMPBAN")" ]
 	then
-		echo -e "Removing $1 from time table.\nScheduled ban is lifted."
-		sed -i '/${$1}/d' "$TEMPBAN"
+		echo -e "Removing $hash from time table.\nScheduled ban is lifted."
+		sed -i '/${$hash}/d' "$TEMPBAN"
 	else
-		echo -e "No scheduled ban found in $TEMPBAN\nRemoving $1 from banlist."
+		echo -e "No scheduled ban found in $TEMPBAN\nRemoving $hash from banlist."
 fi
 
 
 # Send command to screen session
-screen -x "$SCREEN" -X stuff "admin.removeKeyFromBanList $1"$(echo -ne '\015')
+screen -x "$SCREEN" -X stuff "admin.removeKeyFromBanList $hash"$(echo -ne '\015')
