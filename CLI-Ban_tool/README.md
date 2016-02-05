@@ -26,9 +26,9 @@ PR console.
       If you don't know how to do that
       Check this out >> http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path 
 * **Usage:**
-	* To perm ban do *ban [hashKey]*
-	* To unban do *unban [hashKey]*
-	* To schedule a ban do *ban [hashKey] [time in days]*
+	* To perm ban do **ban [hashKey]**
+	* To unban do **unban [hashKey]**
+	* To schedule a ban do **ban [hashKey] [time in days]**
 * **Example:**
 	* _**ban fffe41e8bebbc676846d440f0cde8a32**_ (bans the player with this hash permanently)
 	* _**unban fffe41e8bebbc676846d440f0cde8a32**_ (removes player with this hash from banlist)
