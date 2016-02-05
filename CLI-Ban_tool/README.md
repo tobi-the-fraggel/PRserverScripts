@@ -30,8 +30,8 @@ PR console.
 	* To unban do *unban <hashKey>*
 	* To schedule a ban do *ban <hashKey> <time in days>*
 * **Example:**
-	* ban fffe41e8bebbc676846d440f0cde8a32 (bans the player with this hash permanently)
-	* unban fffe41e8bebbc676846d440f0cde8a32 (removes player with this hash from banlist)
-	* ban fffe41e8bebbc676846d440f0cde8a32 32 (bans the player with this hash for 32 days)
+	* _**ban fffe41e8bebbc676846d440f0cde8a32**_ (bans the player with this hash permanently)
+	* _**unban fffe41e8bebbc676846d440f0cde8a32**_ (removes player with this hash from banlist)
+	* _**ban fffe41e8bebbc676846d440f0cde8a32 32**_ (bans the player with this hash for 32 days)
 
 --- tobi-the-fraggel, 04th February 2016
