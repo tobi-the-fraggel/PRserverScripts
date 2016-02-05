@@ -8,20 +8,30 @@ by injecting the ban command directly into the running
 PR console.
 
 #### Requirements
-- Unix like OS 
-- Program *screen* is installed
-- PR runs in a *screen* session
-- *screen* session name is always the same.
+* Unix like OS 
+* Program *screen* is installed
+* PR runs in a *screen* session
+* *screen* session name is always the same.
 
-#### Recommendation
-- Log in on your box with the user account the pr server
-is running on.
-- If you don't already have the folder do **mkdir ~/bin**
-- Add the folder to $PATH variable.
-- http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path  
-Why would you like to do that?  
-You can then run the scripts form anywhere in your directory tree
-like any other program.
+#### Features
+* Safely adds hashes to PR banlist.con
+* Safely removes hashes from PR banlist.con
+* ability to apply scheduled bans
 
+#### Installation / Usage
+* **Install:**
+	* Log in to the user which runs PR on your box
+	* Put the files into '~/bin'
+	* Add '~/bin' to $PATH variable
+      If you don't know how to do that
+      Check this out >> http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path 
+* **Usage:**
+	* To perm ban do *ban <hashKey>*
+	* To unban do *unban <hashKey>*
+	* To schedule a ban do *ban <hashKey> <time in days>*
+* **Example:**
+	* ban fffe41e8bebbc676846d440f0cde8a32 (bans the player with this hash permanently)
+	* unban fffe41e8bebbc676846d440f0cde8a32 (removes player with this hash from banlist)
+	* ban fffe41e8bebbc676846d440f0cde8a32 32 (bans the player with this hash for 32 days)
 
---- tobi-the-fraggel, 15th October 2015
+--- tobi-the-fraggel, 04th February 2016
