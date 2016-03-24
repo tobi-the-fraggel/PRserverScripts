@@ -1,8 +1,8 @@
 #!/bin/bash
 ############################################
 # Linux PR server automatic restart script #
-#					   #
-# Written by [R-DEV]BloodyDeed		   #
+#										   #
+# Written by [R-DEV]BloodyDeed			   #
 ############################################
 
 DAM=$(exec date +%H:%M:%S)

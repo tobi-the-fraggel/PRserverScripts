@@ -16,7 +16,7 @@ NC='\033[0m'
 PR="$HOME/fcv/"
 PR_UPDATER="$HOME/fcv/mods/pr/bin/"
 SCREEN="pr"
-START="screen_pr.sh"
+START="run_pr.sh"
 
 
 ################## functions
@@ -33,7 +33,8 @@ screen -S pr -X quit
 # Restart PR server
 restart_server() {
 screen -x "$SCREEN" -X stuff "exit$(echo -ne '\015')"
-screen -S "$SCREEN" -d -m $PR/$START
+screen -x "$SCREEN" -X stuff "$PR/$START"
+#screen -S "$SCREEN" -d -m $PR/$START
 }
 
 # Update PR server
