@@ -13,34 +13,34 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 # Server details
-PR="$HOME/5/"
-PR_UPDATER="$HOME/5/mods/pr/bin/"
-SCREEN="pr"
-START="run_pr.sh"
-MUMO="$PR/mods/pr/bin/PRMurmur"
+PR="$HOME/2/"
+PR_UPDATER="$PR/mods/pr/bin/"
+PR_SCREEN="pr"
+MUMO_SCREEN="mumo"
+START_PR="$PR/serverloop.sh"
+START_MUMO="$PR/mumoloop.sh"
+MURMUR="$PR/mods/pr/bin/PRMurmur"
 
 
 ################## functions
 # Start PR server
 start_server() {
-screen -S "$SCREEN" -d -m $PR/$START
-cd $MUMO
-screen -S mumo -d -m ./startmumo.sh
+screen -S "$PR_SCREEN" -d -m $START
+screen -S "$MUMO_SCREEN" -d -m $PR_MUMO
 }
 
 # Stop PR server
 stop_server() {
-screen -X -S "$SCREEN" quit
-screen -X -S mumo quit
+screen -X -S "$PR_SCREEN" quit
+screen -X -S "$MUMO_SCREEN" quit
 }
 
 # Restart PR server
 restart_server() {
-screen -X -S "$SCREEN" quit
-screen -X -S mumo quit
-screen -S "$SCREEN" -d -m $PR/$START
-cd $MUMO
-screen -S mumo -d -m ./startmumo.sh
+screen -X -S "$PR_SCREEN" quit
+screen -X -S "$MUMO_SCREEN" quit
+screen -S "$PR_SCREEN" -d -m $START
+screen -S "$MUMO_SCREEN" -d -m $PR_MUMO
 }
 
 # Update PR server
