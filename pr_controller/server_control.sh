@@ -13,7 +13,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 # Server details
-PR="$HOME/2/"
+PR="$HOME/2"
 PR_UPDATER="$PR/mods/pr/bin/"
 PR_SCREEN="pr"
 MUMO_SCREEN="mumo"
@@ -25,7 +25,8 @@ MURMUR="$PR/mods/pr/bin/PRMurmur"
 ################## functions
 # Start PR server
 start_server() {
-screen -S "$PR_SCREEN" -d -m $START
+cd $PR
+screen -S "$PR_SCREEN" -d -m $START_PR
 screen -S "$MUMO_SCREEN" -d -m $PR_MUMO
 }
 
@@ -39,7 +40,8 @@ screen -X -S "$MUMO_SCREEN" quit
 restart_server() {
 screen -X -S "$PR_SCREEN" quit
 screen -X -S "$MUMO_SCREEN" quit
-screen -S "$PR_SCREEN" -d -m $START
+cd $PR
+screen -S "$PR_SCREEN" -d -m $START_PR
 screen -S "$MUMO_SCREEN" -d -m $PR_MUMO
 }
 
