@@ -4,7 +4,8 @@
 # for PR servers.
 # Written by tobi-the-fraggel
 
-################### Constants
+
+################### Constants ################
 # Some colors for styling
 BLUE="\033[1;34m"
 BROWN='\033[0;33m'
@@ -13,16 +14,19 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 # Server details
-PR="$HOME/2"
+PR="$HOME/1"
+CRASH_LOG="$HOME/1/crash.log"
 PR_UPDATER="$PR/mods/pr/bin/"
 PR_SCREEN="pr"
 MUMO_SCREEN="mumo"
 START_PR="$PR/serverloop.sh"
 START_MUMO="$PR/mumoloop.sh"
 MURMUR="$PR/mods/pr/bin/PRMurmur"
+################## /Constants ################
 
 
-################## functions
+
+################## functions #################
 # Start PR server
 start_server() {
 cd $PR
@@ -34,6 +38,7 @@ screen -S "$MUMO_SCREEN" -d -m $START_MUMO
 stop_server() {
 screen -X -S "$PR_SCREEN" quit
 screen -X -S "$MUMO_SCREEN" quit
+echo "PR and Mumo instances stopped by controller" >> $CRASH_LOG
 }
 
 # Restart PR server
@@ -50,6 +55,8 @@ update_server() {
 cd $PR_UPDATER
 ./prserverupdater-linux64
 }
+################# /functions ##################
+
 
 
 ### Main Logic ###
@@ -84,3 +91,4 @@ select opt in $OPTIONS; do
         echo -e "${BLUE}Bad Option.\nTry${NC} ${RED}'1.Start_Server 2.Stop_Server 3.Restart_Server 4.Update_Server 5.Quit_Program'${NC}"
     fi
 done
+### End of main logic
